@@ -18,10 +18,15 @@ public class Expence {
         this.title=title;
         this.amount=amount;
     }
+
     @Ignore
     Expence(String title,String amount){
         this.title=title;
         this.amount=amount;
+    }
+    @Ignore
+    Expence(int id){
+        this.id=id;
     }
 
     public int getId() {

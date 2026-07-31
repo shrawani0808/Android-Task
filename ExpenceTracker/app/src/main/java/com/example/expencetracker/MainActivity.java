@@ -49,27 +49,22 @@ public class MainActivity extends AppCompatActivity {
 //                for (int i = 0; i < arrExpences.size(); i++) {
 //                    Log.d("Data", "Title: " + arrExpences.get(i).getTitle()
 //                            + " Amount: " + arrExpences.get(i).getAmount());
-//                }
                 Toast.makeText(this,"Expence Added successfully!!",Toast.LENGTH_SHORT).show();
+                }
+
                 edttitle.setText("");
                 edtamount.setText("");
                 edttitle.requestFocus();
-            }
-
-        });
+            });
 
         btnupdateexpence.setOnClickListener(v -> {
             title=edttitle.getText().toString();
             amount=edtamount.getText().toString();
             dbhelper= DataBaseHelper.getDB(this.getApplicationContext());
-            if(title.isEmpty() || amount.isEmpty()){
-                Toast.makeText(this, "Fields should not be empty!!", Toast.LENGTH_SHORT).show();
-            }else {
-                dbhelper.expenceDao().updateTx(
-                        new Expence(title, amount)
-                );
-            }
+
+            dbhelper.expenceDao().updateTx(new Expence(4,"Lunch","360"));
             Toast.makeText(this,"Expence Updated successfully!!",Toast.LENGTH_SHORT).show();
+
             edttitle.setText("");
             edtamount.setText("");
             edttitle.requestFocus();
@@ -79,14 +74,10 @@ public class MainActivity extends AppCompatActivity {
             title=edttitle.getText().toString();
             amount=edtamount.getText().toString();
             dbhelper= DataBaseHelper.getDB(this.getApplicationContext());
-            if(title.isEmpty() || amount.isEmpty()){
-                Toast.makeText(this, "Fields should not be empty!!", Toast.LENGTH_SHORT).show();
-            }else {
-                dbhelper.expenceDao().deleteTx(
-                        new Expence(title, amount)
-                );
-            }
+
+            dbhelper.expenceDao().deleteTx(new Expence(8));
             Toast.makeText(this,"Expence Deleated successfully!!",Toast.LENGTH_SHORT).show();
+
             edttitle.setText("");
             edtamount.setText("");
             edttitle.requestFocus();
